@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Real-time chat — send messages, see who's online, and stay connected.">
+  <title>ChatVault — Messages</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="chat-app" id="chatApp">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-user" id="sidebarUser">
+          <div class="sidebar-user-avatar">
+            <img src="/uploads/default-avatar.png" alt="You" id="myAvatar">
+            <div class="online-dot"></div>
+          </div>
+          <div class="sidebar-user-info">
+            <h3 id="myDisplayName">Loading…</h3>
+            <span>Online</span>
+          </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn" title="Logout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search users…" autocomplete="off">
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+
+      <div class="chat-list" id="chatList">
+        <div class="chat-list-empty" id="chatListEmpty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <h4>No conversations yet</h4>
+          <p>Search for a user above to start chatting</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CHAT AREA -->
+    <main class="chat-area" id="chatArea">
+      <div class="chat-empty" id="chatEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+        <h2>ChatVault</h2>
+        <p>Select a conversation or search for a user to start messaging</p>
+      </div>
+
+      <div class="chat-header" id="chatHeader" style="display:none;">
+        <button class="chat-header-back" id="backBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <div class="chat-header-avatar">
+          <img src="/uploads/default-avatar.png" alt="" id="chatAvatar">
+          <div class="online-dot" id="chatOnlineDot" style="display:none;"></div>
+        </div>
+        <div class="chat-header-info">
+          <h3 id="chatName">User</h3>
+          <div class="chat-header-status" id="chatStatus">offline</div>
+        </div>
+      </div>
+
+      <div class="messages-container" id="messagesContainer" style="display:none;"></div>
+
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+        <span class="typing-text" id="typingText">typing…</span>
+      </div>
+
+      <div class="message-input-bar" id="messageInputBar" style="display:none;">
+        <textarea id="messageInput" placeholder="Type a message…" rows="1"></textarea>
+        <button class="send-btn" id="sendBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>

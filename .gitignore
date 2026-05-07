@@ -1,0 +1,7 @@
+node_modules/
+chat.db
+.env
+public/uploads/*.png
+public/uploads/*.jpg
+public/uploads/*.jpeg
+!public/uploads/default-avatar.png

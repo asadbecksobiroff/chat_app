@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in or create an account to start chatting in real-time.">
+  <title>ChatVault — Sign In</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1 class="auth-logo">ChatVault</h1>
+        <p class="auth-subtitle">Connect with anyone, anywhere</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" data-tab="login">Sign In</button>
+        <button class="auth-tab" id="registerTab" data-tab="register">Sign Up</button>
+      </div>
+
+      <div class="auth-body">
+        <!-- Login Form -->
+        <form class="auth-form active" id="loginForm">
+          <div class="form-group">
+            <label for="loginInput">Username or Email</label>
+            <input type="text" id="loginInput" placeholder="Enter username or email" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn-primary" id="loginBtn">
+            <span class="btn-text">Sign In</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form class="auth-form" id="registerForm">
+          <div class="form-group">
+            <div class="avatar-upload">
+              <div class="avatar-preview" id="avatarPreview">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/>
+                </svg>
+              </div>
+              <div class="avatar-upload-btn">
+                <label for="avatarFile">Choose avatar</label>
+                <span>JPG, PNG up to 5MB</span>
+                <input type="file" id="avatarFile" accept="image/jpeg,image/png,image/gif,image/webp">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regDisplayName">Display Name</label>
+            <input type="text" id="regDisplayName" placeholder="How others will see you">
+          </div>
+          <div class="form-group">
+            <label for="regUsername">Username</label>
+            <input type="text" id="regUsername" placeholder="Choose a unique username" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" placeholder="Minimum 6 characters" required autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn-primary" id="registerBtn">
+            <span class="btn-text">Create Account</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>
